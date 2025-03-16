@@ -18,7 +18,7 @@ char uart_recv ( void )
 			break;
 	}
 	return(get32(AUX_MU_IO_REG)&0xFF);
-}
+}	
 
 void uart_send_string(char* str)
 {
