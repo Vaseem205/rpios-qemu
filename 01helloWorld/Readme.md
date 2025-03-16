@@ -1,6 +1,6 @@
 ## The Build Process
 
-The `Makefile` orchestrates the compilation and linking:
+The `Makefile` for the compilation and linking:
 
 ```makefile
 ARMGNU ?= aarch64-linux-gnu
