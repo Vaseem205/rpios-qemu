@@ -13,6 +13,9 @@
 #define SCTLR_MMU_DISABLED              (0 << 0)
 #define SCTLR_MMU_ENABLED               (1 << 0)
 
+/*
+#define SCTLR_VALUE_MMU_DISABLED = "0011_0000_1101_0000_0000_1000_0000_0000"
+*/
 #define SCTLR_VALUE_MMU_DISABLED	(SCTLR_RESERVED | SCTLR_EE_LITTLE_ENDIAN | SCTLR_I_CACHE_DISABLED | SCTLR_D_CACHE_DISABLED | SCTLR_MMU_DISABLED)
 
 // ***************************************
@@ -20,6 +23,9 @@
 // ***************************************
 
 #define HCR_RW	    		(1 << 31)
+/*
+#define HCR_VALUE = 1000_0000_0000_0000_0000_0000_0000_0000
+*/
 #define HCR_VALUE			HCR_RW
 
 // ***************************************
@@ -29,6 +35,9 @@
 #define SCR_RESERVED	    (3 << 4)
 #define SCR_RW				(1 << 10)
 #define SCR_NS				(1 << 0)
+/*
+#define SCR_VALUE = 0000_0000_0000_0000_0000_0100_0011_0001
+*/
 #define SCR_VALUE	    	    	(SCR_RESERVED | SCR_RW | SCR_NS)
 
 // ***************************************
@@ -37,6 +46,9 @@
 
 #define SPSR_MASK_ALL 		(7 << 6)
 #define SPSR_EL1h			(5 << 0)
+/*
+#define SPSR_VALUE = 0000_0000_0000_0000_0000_0001_1100_0101
+*/
 #define SPSR_VALUE			(SPSR_MASK_ALL | SPSR_EL1h)
 
 #endif
