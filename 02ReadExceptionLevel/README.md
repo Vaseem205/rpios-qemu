@@ -1,3 +1,6 @@
+## Workflow
+![Flow](Flow.png)
+
 ## Understanding ARMv8 Exception Levels
 
 The ARMv8 architecture defines four exception levels (EL0 to EL3), each with increasing privileges:
