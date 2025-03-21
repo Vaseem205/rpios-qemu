@@ -194,8 +194,8 @@ error_invalid_el0_32:
  */
 el1_irq:
     kernel_entry
-    # bl handle_irq   // Call the IRQ handler function (handle_irq in irq.c) 
-	bl error_invalid_el0_32
+    bl handle_irq   // Call the IRQ handler function (handle_irq in irq.c) 
+	# bl error_invalid_el0_32
     kernel_exit
 
 /*

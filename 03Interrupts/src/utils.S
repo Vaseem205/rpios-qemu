@@ -12,7 +12,7 @@ get_cnt:
 
 .globl put32
 put32:
-	str w1,[x0]
+	str w1,[x0]			// stored the value "w1" in the address specified by [x0]
 	ret
 
 .globl get32

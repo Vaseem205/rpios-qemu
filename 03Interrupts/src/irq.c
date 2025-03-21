@@ -33,6 +33,8 @@ void enable_interrupt_controller()
     // For core 0, this is `TIMER_INT_CTRL_0` at 0x40000040; bit 1 is for physical timer at EL1 (CNTP). This register is documented 
     // in the [manual](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2836/QA7_rev3.4.pdf) of BCM2836 
     // (search for "Core timers interrupts"). Note the manual is NOT for the BCM2837 SoC used by Rpi3    
+
+    // put32(address, value); -> str value, address -> utils.S
     put32(TIMER_INT_CTRL_0, TIMER_INT_CTRL_0_VALUE);
 }
 

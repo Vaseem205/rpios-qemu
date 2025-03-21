@@ -11,7 +11,7 @@
 
 .globl gen_timer_init
 gen_timer_init:
-# Below, writes 1 to the control register (CNTP_CTL_EL0) of the EL1 physical timer
+	# Below, writes 1 to the control register (CNTP_CTL_EL0) of the EL1 physical timer
 	# Explanation: 
 	# 		CTL indicates this is a control register
 	#		CNTP_XXX_EL0 indicates that this is for the EL1 physical timer

@@ -11,12 +11,20 @@ int interval = (1 << 26); // xzl: around 1 sec
 	Recommended.
 */
 
-/* CNTFRQ_EL0 reports the frequency of the system count */
+/* 
+CNTFRQ_EL0 reports the frequency of the system count 
+NOTE: 
+CNTFRQ_EL0 reports the frequency of the system count. 
+However, this register is not populated by hardware. 
+The register is write-able at the highest implemented Exception level and readable at all Exception levels. 
+Firmware, typically running at EL3, populates this register as part of early system initialization. 
+Higher-level software, like an operating system, can then use the register to get the frequency.
+*/
 static unsigned int read_cntfrq(void)
 {
 	unsigned int val;
-	asm volatile ("mrs %0, cntfrq_el0" : "=r" (val));
-  	return val;
+	asm volatile ("mrs %0, cntfrq_el0" : "=r" (val));	// the value of cntfrq_el0 (62500000) will be stored in val
+  	return val;											// return val
 }
 
 void generic_timer_init ( void )

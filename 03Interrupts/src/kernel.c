@@ -11,10 +11,10 @@ void kernel_main(void)
 	init_printf(0, putc);
 	printf("kernel boots...\n");
 
-	irq_vector_init();
+	irq_vector_init();						// loading "vectors (entry.S)" address in vbar_el1
 	generic_timer_init();
-	enable_interrupt_controller();
-	enable_irq();
+	enable_interrupt_controller();			// Enables Core 0 Timers interrupt control for the generic timer
+	enable_irq();							// enables IRQs by doing -> msr daifclr, #2
 
 	// FL (2/1/23): the following are some ideas for triggering exceptions. But do they work? 
 	// Validate your guess by searching into aarch64 manuals and/or debugging. 
