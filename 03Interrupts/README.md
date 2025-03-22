@@ -49,7 +49,8 @@ This step prepares the system to handle timer interrupts:
 
 - **Enable Timer Interrupts**:
   - `enable_interrupt_controller()` writes to `TIMER_INT_CTRL_0`, a Raspberry Pi-specific register for core 0.
-  - This enables the EL1 physical timer interrupt, allowing it to reach the processor.
+  - For core 0, `TIMER_INT_CTRL_0` is located at 0x40000040; and we set bit 1 (which enables physical timer at EL1 (CNTP)).
+  - This enables the EL1 physical timer interrupt, allowing interrupt to reach the core-0.
 
 - **Enable IRQs**:
   - `enable_irq()` clears the **I bit** in the DAIF mask using the instruction `msr daifclr, #2`.
