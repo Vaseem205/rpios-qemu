@@ -46,6 +46,18 @@
     b      \label           // Branch to the provided label
 .endm
 
+
+/*
+
+Lets suppose SP = 1000
+after "sub   sp, sp, #S_FRAME_SIZE" SP = 744
+
+Keeping this SP (744) as base, we have offset which is multiple of 16bytes (for 2 register worth 8 bytes)
+So SP is unchanged, while storing the value on stack, which helps it while restoring as SP would still be pointint to 744.
+Its just that we add offset to SP (i.e. multiple of 16)
+
+*/
+
 /*
  * Macro: kernel_entry
  * -------------------

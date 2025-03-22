@@ -12,7 +12,7 @@ void kernel_main(void)
 	printf("kernel boots...\n");
 
 	irq_vector_init();						// loading "vectors (entry.S)" address in vbar_el1
-	generic_timer_init();
+	generic_timer_init();					// read freq, init timer, reset timer
 	enable_interrupt_controller();			// Enables Core 0 Timers interrupt control for the generic timer
 	enable_irq();							// enables IRQs by doing -> msr daifclr, #2
 
