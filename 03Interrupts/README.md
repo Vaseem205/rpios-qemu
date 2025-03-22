@@ -1,3 +1,5 @@
+## Workflow
+![Flow](WorkFlow.png)
 # ARM Generic Timer
 
 The ARM generic timer is a hardware feature in ARM processors designed to provide a consistent timekeeping mechanism across the system. It consists of a **system counter**, a global clock that ticks at a fixed frequency, and **per-core timer** that leverage this system-counter to schedule interrupts.
