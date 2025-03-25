@@ -1,1 +1,1 @@
-![Flow](TaskMemoryAllocation.png)
+![Flow](Figures/TaskMemoryAllocation.png)
