@@ -2,6 +2,7 @@
 #include "irq.h"
 #include "printf.h"
 
+
 static struct task_struct init_task = INIT_TASK; // the very first task with its task_struct values
 struct task_struct *current = &(init_task);		 // points to the currently running task. when kernel boots, sets to init_task
 struct task_struct * task[NR_TASKS] = {&(init_task), }; // holds all task_strcuts. only has init_ask at beginning
