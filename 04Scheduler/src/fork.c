@@ -1,12 +1,21 @@
 #include "mm.h"
 #include "sched.h"
 #include "entry.h"
+#include "printf.h"
 
 // @fn: a function to execute in a new task 
 // @arg: an argument passed to this function
+
+// Example: copy_process((unsigned long)&process, (unsigned long)"12345");
+
 int copy_process(unsigned long fn, unsigned long arg)
 {
 	struct task_struct *p;
+
+
+	printf("Setting the context of process:\n");
+	printf("fork.c\t\t-> address of passed function (process): %x\n", fn);
+	printf("fork.c\t\t-> value of passed function (process): %s\n", arg);
 
 	// Next, a new page is allocated. At the bottom of this page, we are putting 
 	// the `task_struct` for the newly created task. The rest of this page will be used as the task stack.
