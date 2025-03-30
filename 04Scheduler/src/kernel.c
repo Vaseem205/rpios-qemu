@@ -36,7 +36,7 @@ void process(char *array)
 		// printf("Preempt Count = %d\n", current->preempt_count);
 		// printf("***********************\n");
 
-		printf("\n*********** CPU CONTEXT ***********\n");
+		printf("\n*********** CURRENT CPU CONTEXT ***********\n");
 		printf("Preempt Count = 0x%x | value: %d\n", &(current->preempt_count), current->preempt_count);
 		printf("Priority      = 0x%x | value: %d\n", &(current->priority), current->priority);
 		printf("Counter       = 0x%x | value: %d\n", &(current->counter), current->counter);
@@ -55,7 +55,7 @@ void process(char *array)
 		printf("x20           = 0x%x | value: %x\n", &(current->cpu_context.x20), current->cpu_context.x20);
 		printf("x19           = 0x%x | value: %x\n", &(current->cpu_context.x19), current->cpu_context.x19);
 		printf("current-------> 0x%x\n", current);
-		printf("***********************************\n");
+		printf("*********************************************\n");
 
 		for (int i = 0; i < 9; i++){
 			// printf("\naddress of i: %x and letter is: %c\n\n", &i, array[i]);
@@ -79,7 +79,7 @@ void kernel_main(void)
 	init_printf(0, putc);
 
 	
-	printf("\n*********** CPU CONTEXT ***********\n");
+	printf("\n*********** INITIAL CPU CONTEXT ***********\n");
 	printf("Preempt Count = 0x%x | value: %d\n", &(current->preempt_count), current->preempt_count);
     printf("Priority      = 0x%x | value: %d\n", &(current->priority), current->priority);
     printf("Counter       = 0x%x | value: %d\n", &(current->counter), current->counter);
@@ -176,6 +176,8 @@ void kernel_main(void)
 	printf("Tasks are created and contexts for both tasks are set. Its time to schedule: \n");
 
 	while (1) {
+		printf("Inside main schedule()\n");
 		schedule();
+		printf("Exiting main schedule()\n");
 	}	
 }

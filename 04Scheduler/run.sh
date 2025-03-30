@@ -1,4 +1,5 @@
 # Clean previous builds
+date +"%Y-%m-%d %H:%M:%S"
 echo " "
 echo "Cleaning previous builds..."
 make clean

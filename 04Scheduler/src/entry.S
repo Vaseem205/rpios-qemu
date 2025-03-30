@@ -143,7 +143,7 @@ ret_from_fork:
 	// to `x19` and `x20`. 
 	// Below, `ret_from_fork` calls the function stored in `x19` register with the argument stored in `x20`.
 	mov	x0, x20
-	blr	x19 		//calling process() in kernel.c add pass x0 as argument ('12345' or 'abcde') 
+	blr	x19 		//calling process() in kernel.c and pass x0 as argument ('12345' or 'abcde') 
 
 .globl err_hang
 err_hang: b err_hang
