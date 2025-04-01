@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "timer.h": "c",
-        "printf.h": "c"
+        "printf.h": "c",
+        "irq.h": "c",
+        "sched.h": "c"
     }
 }
