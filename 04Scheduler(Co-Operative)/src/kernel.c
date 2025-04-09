@@ -52,8 +52,8 @@ void process(char *array)
 		printf("x23           = 0x%x | value: %d\n", &(current->cpu_context.x23), current->cpu_context.x23);
 		printf("x22           = 0x%x | value: %d\n", &(current->cpu_context.x22), current->cpu_context.x22);
 		printf("x21           = 0x%x | value: %d\n", &(current->cpu_context.x21), current->cpu_context.x21);
-		printf("x20           = 0x%x | value: %x\n", &(current->cpu_context.x20), current->cpu_context.x20);
-		printf("x19           = 0x%x | value: %x\n", &(current->cpu_context.x19), current->cpu_context.x19);
+		printf("x20           = 0x%x | value: 0x%x\n", &(current->cpu_context.x20), current->cpu_context.x20);
+		printf("x19           = 0x%x | value: 0x%x\n", &(current->cpu_context.x19), current->cpu_context.x19);
 		printf("current-------> 0x%x\n", current);
 		printf("*********************************************\n");
 
@@ -95,8 +95,8 @@ void kernel_main(void)
     printf("x23           = 0x%x | value: %d\n", &(current->cpu_context.x23), current->cpu_context.x23);
     printf("x22           = 0x%x | value: %d\n", &(current->cpu_context.x22), current->cpu_context.x22);
     printf("x21           = 0x%x | value: %d\n", &(current->cpu_context.x21), current->cpu_context.x21);
-    printf("x20           = 0x%x | value: %d\n", &(current->cpu_context.x20), current->cpu_context.x20);
-    printf("x19           = 0x%x | value: %d\n", &(current->cpu_context.x19), current->cpu_context.x19);
+    printf("x20           = 0x%x | value: 0x%d\n", &(current->cpu_context.x20), current->cpu_context.x20);
+    printf("x19           = 0x%x | value: 0x%d\n", &(current->cpu_context.x19), current->cpu_context.x19);
 	printf("current-------> 0x%x\n", current);
 	printf("***********************************\n");
 
@@ -138,8 +138,8 @@ void kernel_main(void)
 	printf("x23           = 0x%x | value: %d\n", &(current->cpu_context.x23), current->cpu_context.x23);
 	printf("x22           = 0x%x | value: %d\n", &(current->cpu_context.x22), current->cpu_context.x22);
 	printf("x21           = 0x%x | value: %d\n", &(current->cpu_context.x21), current->cpu_context.x21);
-	printf("x20           = 0x%x | value: %x\n", &(current->cpu_context.x20), current->cpu_context.x20);
-	printf("x19           = 0x%x | value: %x\n", &(current->cpu_context.x19), current->cpu_context.x19);
+	printf("x20           = 0x%x | value: 0x%x\n", &(current->cpu_context.x20), current->cpu_context.x20);
+	printf("x19           = 0x%x | value: 0x%x\n", &(current->cpu_context.x19), current->cpu_context.x19);
 	printf("current-------> 0x%x\n", current);
 	printf("*******************************************************\n");
 	printf("\n");
@@ -165,8 +165,8 @@ void kernel_main(void)
 	printf("x23           = 0x%x | value: %d\n", &(current->cpu_context.x23), current->cpu_context.x23);
 	printf("x22           = 0x%x | value: %d\n", &(current->cpu_context.x22), current->cpu_context.x22);
 	printf("x21           = 0x%x | value: %d\n", &(current->cpu_context.x21), current->cpu_context.x21);
-	printf("x20           = 0x%x | value: %x\n", &(current->cpu_context.x20), current->cpu_context.x20);
-	printf("x19           = 0x%x | value: %x\n", &(current->cpu_context.x19), current->cpu_context.x19);
+	printf("x20           = 0x%x | value: 0x%x\n", &(current->cpu_context.x20), current->cpu_context.x20);
+	printf("x19           = 0x%x | value: 0x%x\n", &(current->cpu_context.x19), current->cpu_context.x19);
 	printf("current-------> 0x%x\n", current);
 	printf("*******************************************************\n");
 

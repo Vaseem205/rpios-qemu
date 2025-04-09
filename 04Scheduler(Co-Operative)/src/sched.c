@@ -46,8 +46,8 @@ void _schedule(void)
 			printf("x23           = 0x%x | value: %d\n", &(p->cpu_context.x23), p->cpu_context.x23);
 			printf("x22           = 0x%x | value: %d\n", &(p->cpu_context.x22), p->cpu_context.x22);
 			printf("x21           = 0x%x | value: %d\n", &(p->cpu_context.x21), p->cpu_context.x21);
-			printf("x20           = 0x%x | value: %x\n", &(p->cpu_context.x20), p->cpu_context.x20);
-			printf("x19           = 0x%x | value: %x\n", &(p->cpu_context.x19), p->cpu_context.x19);
+			printf("x20           = 0x%x | value: 0x%x\n", &(p->cpu_context.x20), p->cpu_context.x20);
+			printf("x19           = 0x%x | value: 0x%x\n", &(p->cpu_context.x19), p->cpu_context.x19);
 			printf("current-------> 0x%x\n", current);
 			printf("*******************************************************\n");
 
@@ -125,8 +125,8 @@ void switch_to(struct task_struct * next)
 	printf("x23           		= 0x%x | value: %d\t\t\tx23           		= 0x%x | value: %d \n", &(prev->cpu_context.x23), 	prev->cpu_context.x23, 	&(current->cpu_context.x23), 	current->cpu_context.x23);
 	printf("x22           		= 0x%x | value: %d\t\t\tx22           		= 0x%x | value: %d \n", &(prev->cpu_context.x22), 	prev->cpu_context.x22, 	&(current->cpu_context.x22), 	current->cpu_context.x22);
 	printf("x21           		= 0x%x | value: %d\t\t\tx21           		= 0x%x | value: %d \n", &(prev->cpu_context.x21), 	prev->cpu_context.x21, 	&(current->cpu_context.x21), 	current->cpu_context.x21);
-	printf("x20 [args]			= 0x%x | value: %x\t\tx20 [args]			= 0x%x | value: %x \n", &(prev->cpu_context.x20), 	prev->cpu_context.x20, 	&(current->cpu_context.x20), 	current->cpu_context.x20);
-	printf("x19 [process()]		= 0x%x | value: %x\t\tx19 [process()]		= 0x%x | value: %x \n", &(prev->cpu_context.x19), 	prev->cpu_context.x19,	&(current->cpu_context.x19), 						current->cpu_context.x19);
+	printf("x20 [args]			= 0x%x | value: 0x%x\t\tx20 [args]			= 0x%x | value: 0x%x \n", &(prev->cpu_context.x20), 	prev->cpu_context.x20, 	&(current->cpu_context.x20), 	current->cpu_context.x20);
+	printf("x19 [process()]		= 0x%x | value: 0x%x\t\tx19 [process()]		= 0x%x | value: 0x%x \n", &(prev->cpu_context.x19), 	prev->cpu_context.x19,	&(current->cpu_context.x19), 						current->cpu_context.x19);
 	printf("\ncurrent-------> 0x%x\n", current);
 	printf("*****************************************************************************************************************************\n");
 	cpu_switch_to(prev, next); // do context switch

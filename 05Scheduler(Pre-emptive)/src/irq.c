@@ -43,6 +43,7 @@ void handle_irq(void)
     unsigned int irq = get32(INT_SOURCE_0);
     switch (irq) {
         case (GENERIC_TIMER_INTERRUPT):
+            printf("\n TIMER INTERRUPT OCCURED!\n");
             handle_generic_timer_irq();
             break;
         default:
