@@ -1,0 +1,40 @@
+2025-04-09 22:07:02
+ 
+Cleaning previous builds...
+rm -rf build *.img 
+ 
+Building the project...
+mkdir -p build
+aarch64-linux-gnu-gcc -Wall -Werror -nostdlib -nostartfiles -ffreestanding -Iinclude -mgeneral-regs-only -g -O0 -DUSE_QEMU -MMD -c src/fork.c -o build/fork_c.o
+mkdir -p build
+aarch64-linux-gnu-gcc -Wall -Werror -nostdlib -nostartfiles -ffreestanding -Iinclude -mgeneral-regs-only -g -O0 -DUSE_QEMU -MMD -c src/irq.c -o build/irq_c.o
+mkdir -p build
+aarch64-linux-gnu-gcc -Wall -Werror -nostdlib -nostartfiles -ffreestanding -Iinclude -mgeneral-regs-only -g -O0 -DUSE_QEMU -MMD -c src/kernel.c -o build/kernel_c.o
+mkdir -p build
+aarch64-linux-gnu-gcc -Wall -Werror -nostdlib -nostartfiles -ffreestanding -Iinclude -mgeneral-regs-only -g -O0 -DUSE_QEMU -MMD -c src/mini_uart.c -o build/mini_uart_c.o
+mkdir -p build
+aarch64-linux-gnu-gcc -Wall -Werror -nostdlib -nostartfiles -ffreestanding -Iinclude -mgeneral-regs-only -g -O0 -DUSE_QEMU -MMD -c src/mm.c -o build/mm_c.o
+mkdir -p build
+aarch64-linux-gnu-gcc -Wall -Werror -nostdlib -nostartfiles -ffreestanding -Iinclude -mgeneral-regs-only -g -O0 -DUSE_QEMU -MMD -c src/printf.c -o build/printf_c.o
+mkdir -p build
+aarch64-linux-gnu-gcc -Wall -Werror -nostdlib -nostartfiles -ffreestanding -Iinclude -mgeneral-regs-only -g -O0 -DUSE_QEMU -MMD -c src/sched.c -o build/sched_c.o
+mkdir -p build
+aarch64-linux-gnu-gcc -Wall -Werror -nostdlib -nostartfiles -ffreestanding -Iinclude -mgeneral-regs-only -g -O0 -DUSE_QEMU -MMD -c src/sys.c -o build/sys_c.o
+mkdir -p build
+aarch64-linux-gnu-gcc -Wall -Werror -nostdlib -nostartfiles -ffreestanding -Iinclude -mgeneral-regs-only -g -O0 -DUSE_QEMU -MMD -c src/timer.c -o build/timer_c.o
+aarch64-linux-gnu-gcc -Iinclude  -g -DUSE_QEMU -MMD -c src/boot.S -o build/boot_s.o
+aarch64-linux-gnu-gcc -Iinclude  -g -DUSE_QEMU -MMD -c src/entry.S -o build/entry_s.o
+aarch64-linux-gnu-gcc -Iinclude  -g -DUSE_QEMU -MMD -c src/irq.S -o build/irq_s.o
+aarch64-linux-gnu-gcc -Iinclude  -g -DUSE_QEMU -MMD -c src/mm.S -o build/mm_s.o
+aarch64-linux-gnu-gcc -Iinclude  -g -DUSE_QEMU -MMD -c src/sched.S -o build/sched_s.o
+aarch64-linux-gnu-gcc -Iinclude  -g -DUSE_QEMU -MMD -c src/sys.S -o build/sys_s.o
+aarch64-linux-gnu-gcc -Iinclude  -g -DUSE_QEMU -MMD -c src/timer.S -o build/timer_s.o
+aarch64-linux-gnu-gcc -Iinclude  -g -DUSE_QEMU -MMD -c src/utils.S -o build/utils_s.o
+aarch64-linux-gnu-ld -T src/linker-qemu.ld -o build/kernel8.elf  build/fork_c.o build/irq_c.o build/kernel_c.o build/mini_uart_c.o build/mm_c.o build/printf_c.o build/sched_c.o build/sys_c.o build/timer_c.o build/boot_s.o build/entry_s.o build/irq_s.o build/mm_s.o build/sched_s.o build/sys_s.o build/timer_s.o build/utils_s.o
+aarch64-linux-gnu-objcopy build/kernel8.elf -O binary kernel8.img
+ 
+Starting QEMU with the specified parameters...
+kernel boots...
+Kernel process started. EL 1
+User process started
+12345123451234512345123451234512345123451abcdabcdabcdabcdabcdabcdabcdabcdabc2345123451234512345123451234512345123451dabcdabcdabcdabcdabcdabcdabcdabcda2345123451234512345123451234512345123451234bcdabcdabcdabcdabcdabcdabcdabcdabc5123451234512345123451234512345123451234512dabcdabcdabcdabcdabcdabcdabcdabcda345123451234512QEMU has been started.
