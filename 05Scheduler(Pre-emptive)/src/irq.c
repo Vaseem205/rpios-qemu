@@ -45,6 +45,7 @@ void handle_irq(void)
         case (GENERIC_TIMER_INTERRUPT):
             printf("\n TIMER INTERRUPT OCCURED!\n");
             handle_generic_timer_irq();
+            printf("\n BACK TO THE POINT!\n");
             break;
         default:
             printf("Unknown pending irq: %x\r\n", irq);
