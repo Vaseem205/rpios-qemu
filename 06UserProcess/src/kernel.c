@@ -54,11 +54,13 @@ void user_process(){
 }
 
 void kernel_process(){
+	printf("Address of kernel_process(): 0x%x\n", (void*)kernel_process);
 	printf("Kernel process started. EL %d\r\n", get_el());
 	int err = move_to_user_mode((unsigned long)&user_process);
 	if (err < 0) {
 		printf("Error while moving process to user mode\n\r");
 	} 
+	printf("\nKernel created user task\n\n");
 	// this func is called from ret_from_fork (entry.S). after returning, it goes back to 
 	// ret_from_fork and does kernel_exit there. hence, pt_regs populated by move_to_user_mode()
 	// will take effect. 
@@ -76,13 +78,16 @@ void kernel_main(void)
 	enable_interrupt_controller();
 	enable_irq();
 
+	printf("kernel_main()\n");
 	int res = copy_process(PF_KTHREAD, (unsigned long)&kernel_process, 0, 0);
 	if (res < 0) {
 		printf("error while starting kernel process");
 		return;
 	}
+	printf("kernel_main()\n");
 
 	while (1) {
+		printf("Entered schedule() in kernel_main() [kernel.c]\n");
 		schedule();
 	}	
 }

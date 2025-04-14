@@ -171,34 +171,36 @@ el0_irq:
 
 // the syscall path (from irq vector)
 el0_sync:
-	kernel_entry 0
-	mrs	x25, esr_el1					// read the syndrome register
-	lsr	x24, x25, #ESR_ELx_EC_SHIFT		// exception class
-	cmp	x24, #ESR_ELx_EC_SVC64			// is the currrent exception caused by SVC in 64-bit state? 
-	b.eq	el0_svc						// if yes, jump to below for handling syscalls 
+	kernel_entry 	0
+	mrs		x25, esr_el1						// read the syndrome register
+	lsr		x24, x25, 	#ESR_ELx_EC_SHIFT		// exception class
+	cmp		x24, 		#ESR_ELx_EC_SVC64		// is the currrent exception caused by SVC in 64-bit state? 
+	b.eq	el0_svc								// if yes, jump to below for handling syscalls 
 	handle_invalid_entry 0, SYNC_ERROR
 
-sc_nr	.req	x25					// number of system calls
-scno	.req	x26					// syscall number
-stbl	.req	x27					// syscall table pointer
+sc_nr	.req	x25							// number of system calls
+scno	.req	x26							// syscall number
+stbl	.req	x27							// syscall table pointer
 
 // the syscall path (cont'd)
 el0_svc:
-	adr	stbl, sys_call_table			// load syscall table pointer
-	uxtw	scno, w8					// syscall number in w8
-	mov	sc_nr, #__NR_syscalls
-	bl	enable_irq
-	cmp     scno, sc_nr                 // syscall number >= upper syscall limit?			
-	b.hs	ni_sys						// if yes, jump to handle errors
+	adr		stbl, sys_call_table			// load syscall table pointer
+	uxtw	scno, w8						// syscall number in w8
+	mov		sc_nr, #__NR_syscalls
+	bl		enable_irq
+	cmp     scno, sc_nr                 	// syscall number >= upper syscall limit?			
+	b.hs	ni_sys							// if yes, jump to handle errors
 
-	ldr	x16, [stbl, scno, lsl #3]		// address in the syscall table
-	blr	x16								// call sys_* routine
-	b	ret_from_syscall
+	ldr		x16, [stbl, scno, lsl #3]		// address in the syscall table
+	blr		x16								// call sys_* routine
+	b		ret_from_syscall
+
 ni_sys:
 	handle_invalid_entry 0, SYSCALL_ERROR
+
 ret_from_syscall:
 	bl	disable_irq				
-	str	x0, [sp, #S_X0]				// returned x0 to the user task (saving x0 to on the stack)
+	str	x0, [sp, #S_X0]						// returned x0 to the user task (saving x0 to on the stack)
 	kernel_exit 0
 
 // the first instructions to be executed by a new task 
@@ -206,12 +208,12 @@ ret_from_syscall:
 .globl ret_from_fork
 ret_from_fork:
 	bl	schedule_tail
-	cbz	x19, ret_to_user			// branch to below if not a kernel thread
-	mov	x0, x20						// kernel thread, load fn/arg as populated by copy_process()
+	cbz	x19, ret_to_user					// branch to below if not a kernel thread
+	mov	x0, x20								// kernel thread, load fn/arg as populated by copy_process()
 	blr	x19
 ret_to_user:
 	bl disable_irq				
-	kernel_exit 0 					// will restore previously prepared processor state (pt_regs), hit eret, then EL0
+	kernel_exit 0 							// will restore previously prepared processor state (pt_regs), hit eret, then EL0
 
 .globl err_hang
 err_hang: b err_hang

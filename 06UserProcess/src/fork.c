@@ -52,19 +52,51 @@ int move_to_user_mode(unsigned long pc)
 {
 	/* Convert a kernel task to a user task, which must have legit pt_regs which 
 	are expected by kernel_exit() as we move to user level for 1st time */		
+
+	printf("\n************ move_to_user_mode() ************\n");
+		
 	struct pt_regs *regs = task_pt_regs(current);
 
-	memzero((unsigned long)regs, sizeof(*regs));
+	printf("regs:\t\t\t0x%x\n", regs);
+	printf("sizeof(*regs):\t0x%x\n", sizeof(*regs));
+
+	/*
+	
+	it'll zero down 34 8-Bytes Block of memmory
+
+	ex: 
+	(unsigned long)regs = 0x400ef0	-> gets stored in register x0
+	sizeof(*regs)		= 0x110		-> gets stored in register x1
+
+	in memzero (asm macro), we will zero down 0x110 Bytes of memory in decrementing order,
+	starting from 0x400ef0 to 0x400ff0, all values will be 0
+
+	NOTE: 34 8-Bytes blocks will have 0s. 
+	
+	*/
+	memzero((unsigned long)regs, sizeof(*regs)); 
 	regs->pc = pc; /* points to the first instruction to be executed once the task lands in user mode via eret */
 	regs->pstate = PSR_MODE_EL0t; /* to be copied by kernel_exit() to SPSR_EL1. then eret will take care of it */
 	
 	/* Allocate a new user stack, in addition to the task's existing kernel stack */
-	unsigned long stack = get_free_page(); 
+	unsigned long stack = get_free_page();
 	if (!stack) {
 		return -1;
 	}
 	regs->sp = stack + PAGE_SIZE; 
+	
+
+	printf("\n========= regs context =========\n");
+	printf("regs->sp:\t\t0x%x (stack + PAGE_SIZE: 0x%x + %x)\n", regs->sp, stack, PAGE_SIZE);
+	printf("regs->pc:\t\t0x%x\n", regs->pc);
+	printf("regs->pstate:\t0x%x\n", regs->pstate);
+	printf("\n");
+
+	printf("Initial value of 'current->stack': 0x%x\n", current->stack);
 	current->stack = stack;
+	printf("Updated value of 'current->stack': 0x%x\n", current->stack);
+	printf("\n*********************************************\n");
+
 	return 0;
 }
 
@@ -72,6 +104,15 @@ int move_to_user_mode(unsigned long pc)
    these regs are saved/restored by kernel_entry()/kernel_exit(). 
 */
 struct pt_regs * task_pt_regs(struct task_struct *tsk) {
+
+	printf("\n\t======== task_pt_regs() =========\n");
+
+	printf("\ttsk:\t\t\t\t\t%x\n", tsk);
+	printf("\tTHREAD_SIZE:\t\t\t%d\n", THREAD_SIZE);
+	printf("\tsizeof(struct pt_regs):\t0x%x\n", sizeof(struct pt_regs));
+
 	unsigned long p = (unsigned long)tsk + THREAD_SIZE - sizeof(struct pt_regs);
+	printf("\tp :\t\t\t\t\t\t0x%x\n", p);
+	printf("\n");
 	return (struct pt_regs *)p;
 }
