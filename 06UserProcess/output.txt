@@ -1,4 +1,4 @@
-2025-04-14 23:50:34
+2025-04-15 00:03:19
  
 Cleaning previous builds...
 rm -rf build *.img 
@@ -43,6 +43,27 @@ kernel boots...
 	sizeof(struct pt_regs):	0x110
 	p :						0x400ef0
 
+
+*********** COPY PROCESS CONTEXT ***********
+Preempt Count = 0x400080 | value: 1
+Priority      = 0x400078 | value: 1
+Counter       = 0x400070 | value: 1
+State         = 0x400068 | value: 0
+pc            = 0x400060 | value: 0x837e0
+sp            = 0x400058 | value: 0x400ef0
+fp            = 0x400050 | value: 0x0
+x28           = 0x400048 | value: 0
+x27           = 0x400040 | value: 0
+x26           = 0x400038 | value: 0
+x25           = 0x400030 | value: 0
+x24           = 0x400028 | value: 0
+x23           = 0x400020 | value: 0
+x22           = 0x400018 | value: 0
+x21           = 0x400010 | value: 0
+x20           = 0x400008 | value: 0x0
+x19           = 0x400000 | value: 0x80fa4
+current-------> 0x84e00
+*********************************************
 kernel_main()
 Entered schedule() in kernel_main() [kernel.c]
 Entered _schedule() [sched.c]
@@ -50,27 +71,27 @@ Entered _schedule() [sched.c]
 Switching Task: 0 -> 1
 
 ******************************************************* CONTEXT SWITCH *******************************************************
-Preempt Count 		= 0x84b60 | value: 1			Preempt Count 		= 0x400080 | value: 1 
-Priority      		= 0x84b58 | value: 1			Priority      		= 0x400078 | value: 1 
-Counter       		= 0x84b50 | value: 0			Counter       		= 0x400070 | value: 1 
-State         		= 0x84b48 | value: 0			State         		= 0x400068 | value: 0 
-pc            		= 0x84b40 | value: 0x0		pc            		= 0x400060 | value: 0x837e0 
-sp            		= 0x84b38 | value: 0x0	sp            		= 0x400058 | value: 0x400ef0 
-fp            		= 0x84b30 | value: 0x0			fp            	= 0x400050 | value: 0x0 
-x28           		= 0x84b28 | value: 0			x28           		= 0x400048 | value: 0 
-x27           		= 0x84b20 | value: 0 -------> 	x27           = 0x400040 | value: 0 
-x26           		= 0x84b18 | value: 0			x26           		= 0x400038 | value: 0 
-x25           		= 0x84b10 | value: 0			x25           		= 0x400030 | value: 0 
-x24           		= 0x84b08 | value: 0			x24           		= 0x400028 | value: 0 
-x23           		= 0x84b00 | value: 0			x23           		= 0x400020 | value: 0 
-x22           		= 0x84af8 | value: 0			x22           		= 0x400018 | value: 0 
-x21           		= 0x84af0 | value: 0			x21           		= 0x400010 | value: 0 
-x20 [args]			= 0x84ae8 | value: 0x0		x20 [args]			= 0x400008 | value: 0x0 
-x19 [process()]		= 0x84ae0 | value: 0x0		x19 [process()]		= 0x400000 | value: 0x80d54 
+Preempt Count 		= 0x84e80 | value: 1			Preempt Count 		= 0x400080 | value: 1 
+Priority      		= 0x84e78 | value: 1			Priority      		= 0x400078 | value: 1 
+Counter       		= 0x84e70 | value: 0			Counter       		= 0x400070 | value: 1 
+State         		= 0x84e68 | value: 0			State         		= 0x400068 | value: 0 
+pc            		= 0x84e60 | value: 0x0		pc            		= 0x400060 | value: 0x837e0 
+sp            		= 0x84e58 | value: 0x0	sp            		= 0x400058 | value: 0x400ef0 
+fp            		= 0x84e50 | value: 0x0			fp            	= 0x400050 | value: 0x0 
+x28           		= 0x84e48 | value: 0			x28           		= 0x400048 | value: 0 
+x27           		= 0x84e40 | value: 0 -------> 	x27           = 0x400040 | value: 0 
+x26           		= 0x84e38 | value: 0			x26           		= 0x400038 | value: 0 
+x25           		= 0x84e30 | value: 0			x25           		= 0x400030 | value: 0 
+x24           		= 0x84e28 | value: 0			x24           		= 0x400028 | value: 0 
+x23           		= 0x84e20 | value: 0			x23           		= 0x400020 | value: 0 
+x22           		= 0x84e18 | value: 0			x22           		= 0x400018 | value: 0 
+x21           		= 0x84e10 | value: 0			x21           		= 0x400010 | value: 0 
+x20 [args]			= 0x84e08 | value: 0x0		x20 [args]			= 0x400008 | value: 0x0 
+x19 [process()]		= 0x84e00 | value: 0x0		x19 [process()]		= 0x400000 | value: 0x80fa4 
 
 current-------> 0x400000
 *****************************************************************************************************************************
-Address of kernel_process(): 0x80d54
+Address of kernel_process(): 0x80fa4
 Kernel process started. EL 1
 
 ************ move_to_user_mode() ************
@@ -86,7 +107,7 @@ sizeof(*regs):	0x110
 
 ========= regs context =========
 regs->sp:		0x402000 (stack + PAGE_SIZE: 0x401000 + 1000)
-regs->pc:		0x80c84
+regs->pc:		0x80ed4
 regs->pstate:	0x0
 
 Initial value of 'current->stack': 0x0
@@ -112,6 +133,27 @@ User process started
 	p :						0x400ef0
 
 
+*********** COPY PROCESS CONTEXT ***********
+Preempt Count = 0x403080 | value: 1
+Priority      = 0x403078 | value: 1
+Counter       = 0x403070 | value: 1
+State         = 0x403068 | value: 0
+pc            = 0x403060 | value: 0x837e0
+sp            = 0x403058 | value: 0x403ef0
+fp            = 0x403050 | value: 0x0
+x28           = 0x403048 | value: 0
+x27           = 0x403040 | value: 0
+x26           = 0x403038 | value: 0
+x25           = 0x403030 | value: 0
+x24           = 0x403028 | value: 0
+x23           = 0x403020 | value: 0
+x22           = 0x403018 | value: 0
+x21           = 0x403010 | value: 0
+x20           = 0x403008 | value: 0x0
+x19           = 0x403000 | value: 0x0
+current-------> 0x400000
+*********************************************
+
 	======== task_pt_regs() =========
 	tsk:					405000
 	THREAD_SIZE:			4096
@@ -125,6 +167,27 @@ User process started
 	sizeof(struct pt_regs):	0x110
 	p :						0x400ef0
 
+
+*********** COPY PROCESS CONTEXT ***********
+Preempt Count = 0x405080 | value: 1
+Priority      = 0x405078 | value: 1
+Counter       = 0x405070 | value: 1
+State         = 0x405068 | value: 0
+pc            = 0x405060 | value: 0x837e0
+sp            = 0x405058 | value: 0x405ef0
+fp            = 0x405050 | value: 0x0
+x28           = 0x405048 | value: 0
+x27           = 0x405040 | value: 0
+x26           = 0x405038 | value: 0
+x25           = 0x405030 | value: 0
+x24           = 0x405028 | value: 0
+x23           = 0x405020 | value: 0
+x22           = 0x405018 | value: 0
+x21           = 0x405010 | value: 0
+x20           = 0x405008 | value: 0x0
+x19           = 0x405000 | value: 0x0
+current-------> 0x400000
+*********************************************
 Entered _schedule() [sched.c]
 
 Switching Task: 1 -> 2
@@ -146,11 +209,11 @@ x23           		= 0x400020 | value: 0			x23           		= 0x403020 | value: 0
 x22           		= 0x400018 | value: 0			x22           		= 0x403018 | value: 0 
 x21           		= 0x400010 | value: 0			x21           		= 0x403010 | value: 0 
 x20 [args]			= 0x400008 | value: 0x0		x20 [args]			= 0x403008 | value: 0x0 
-x19 [process()]		= 0x400000 | value: 0x80d54		x19 [process()]		= 0x403000 | value: 0x0 
+x19 [process()]		= 0x400000 | value: 0x80fa4		x19 [process()]		= 0x403000 | value: 0x0 
 
 current-------> 0x403000
 *****************************************************************************************************************************
-123451234512345123451234512345123451Entered _schedule() [sched.c]
+12345123451234512345123451234512345123Entered _schedule() [sched.c]
 
 Switching Task: 2 -> 3
 
@@ -180,25 +243,25 @@ abcdabcdabcdabcdabcdabcdabcdabcdaEntered _schedule() [sched.c]
 Switching Task: -1 -> 0
 
 ******************************************************* CONTEXT SWITCH *******************************************************
-Preempt Count 		= 0x405080 | value: 1			Preempt Count 		= 0x84b60 | value: 1 
-Priority      		= 0x405078 | value: 1			Priority      		= 0x84b58 | value: 1 
-Counter       		= 0x405070 | value: 1			Counter       		= 0x84b50 | value: 1 
-State         		= 0x405068 | value: 0			State         		= 0x84b48 | value: 0 
-pc            		= 0x405060 | value: 0x837e0		pc            		= 0x84b40 | value: 0x82104 
-sp            		= 0x405058 | value: 0x405ef0	sp            		= 0x84b38 | value: 0x3fff70 
-fp            		= 0x405050 | value: 0x0			fp            	= 0x84b30 | value: 0x3fff70 
-x28           		= 0x405048 | value: 0			x28           		= 0x84b28 | value: 0 
-x27           		= 0x405040 | value: 0 -------> 	x27           = 0x84b20 | value: 0 
-x26           		= 0x405038 | value: 0			x26           		= 0x84b18 | value: 0 
-x25           		= 0x405030 | value: 0			x25           		= 0x84b10 | value: 0 
-x24           		= 0x405028 | value: 0			x24           		= 0x84b08 | value: 0 
-x23           		= 0x405020 | value: 0			x23           		= 0x84b00 | value: 0 
-x22           		= 0x405018 | value: 0			x22           		= 0x84af8 | value: 0 
-x21           		= 0x405010 | value: 0			x21           		= 0x84af0 | value: 0 
-x20 [args]			= 0x405008 | value: 0x0		x20 [args]			= 0x84ae8 | value: 0x0 
-x19 [process()]		= 0x405000 | value: 0x0		x19 [process()]		= 0x84ae0 | value: 0x0 
+Preempt Count 		= 0x405080 | value: 1			Preempt Count 		= 0x84e80 | value: 1 
+Priority      		= 0x405078 | value: 1			Priority      		= 0x84e78 | value: 1 
+Counter       		= 0x405070 | value: 1			Counter       		= 0x84e70 | value: 1 
+State         		= 0x405068 | value: 0			State         		= 0x84e68 | value: 0 
+pc            		= 0x405060 | value: 0x837e0		pc            		= 0x84e60 | value: 0x82354 
+sp            		= 0x405058 | value: 0x405ef0	sp            		= 0x84e58 | value: 0x3fff70 
+fp            		= 0x405050 | value: 0x0			fp            	= 0x84e50 | value: 0x3fff70 
+x28           		= 0x405048 | value: 0			x28           		= 0x84e48 | value: 0 
+x27           		= 0x405040 | value: 0 -------> 	x27           = 0x84e40 | value: 0 
+x26           		= 0x405038 | value: 0			x26           		= 0x84e38 | value: 0 
+x25           		= 0x405030 | value: 0			x25           		= 0x84e30 | value: 0 
+x24           		= 0x405028 | value: 0			x24           		= 0x84e28 | value: 0 
+x23           		= 0x405020 | value: 0			x23           		= 0x84e20 | value: 0 
+x22           		= 0x405018 | value: 0			x22           		= 0x84e18 | value: 0 
+x21           		= 0x405010 | value: 0			x21           		= 0x84e10 | value: 0 
+x20 [args]			= 0x405008 | value: 0x0		x20 [args]			= 0x84e08 | value: 0x0 
+x19 [process()]		= 0x405000 | value: 0x0		x19 [process()]		= 0x84e00 | value: 0x0 
 
-current-------> 0x84ae0
+current-------> 0x84e00
 *****************************************************************************************************************************
 return from process execution
 
@@ -209,30 +272,30 @@ Entered _schedule() [sched.c]
 Switching Task: 1 -> 2
 
 ******************************************************* CONTEXT SWITCH *******************************************************
-Preempt Count 		= 0x84b60 | value: 1			Preempt Count 		= 0x403080 | value: 1 
-Priority      		= 0x84b58 | value: 1			Priority      		= 0x403078 | value: 1 
-Counter       		= 0x84b50 | value: 0			Counter       		= 0x403070 | value: 1 
-State         		= 0x84b48 | value: 0			State         		= 0x403068 | value: 0 
-pc            		= 0x84b40 | value: 0x82104		pc            		= 0x403060 | value: 0x82104 
-sp            		= 0x84b38 | value: 0x3fff70	sp            		= 0x403058 | value: 0x403e50 
-fp            		= 0x84b30 | value: 0x3fff70			fp            	= 0x403050 | value: 0x403e50 
-x28           		= 0x84b28 | value: 0			x28           		= 0x403048 | value: 0 
-x27           		= 0x84b20 | value: 0 -------> 	x27           = 0x403040 | value: 0 
-x26           		= 0x84b18 | value: 0			x26           		= 0x403038 | value: 0 
-x25           		= 0x84b10 | value: 0			x25           		= 0x403030 | value: 0 
-x24           		= 0x84b08 | value: 0			x24           		= 0x403028 | value: 0 
-x23           		= 0x84b00 | value: 0			x23           		= 0x403020 | value: 536870912 
-x22           		= 0x84af8 | value: 0			x22           		= 0x403018 | value: 538996 
-x21           		= 0x84af0 | value: 0			x21           		= 0x403010 | value: 4206544 
-x20 [args]			= 0x84ae8 | value: 0x0		x20 [args]			= 0x403008 | value: 0x0 
-x19 [process()]		= 0x84ae0 | value: 0x0		x19 [process()]		= 0x403000 | value: 0x0 
+Preempt Count 		= 0x84e80 | value: 1			Preempt Count 		= 0x403080 | value: 1 
+Priority      		= 0x84e78 | value: 1			Priority      		= 0x403078 | value: 1 
+Counter       		= 0x84e70 | value: 0			Counter       		= 0x403070 | value: 1 
+State         		= 0x84e68 | value: 0			State         		= 0x403068 | value: 0 
+pc            		= 0x84e60 | value: 0x82354		pc            		= 0x403060 | value: 0x82354 
+sp            		= 0x84e58 | value: 0x3fff70	sp            		= 0x403058 | value: 0x403e50 
+fp            		= 0x84e50 | value: 0x3fff70			fp            	= 0x403050 | value: 0x403e50 
+x28           		= 0x84e48 | value: 0			x28           		= 0x403048 | value: 0 
+x27           		= 0x84e40 | value: 0 -------> 	x27           = 0x403040 | value: 0 
+x26           		= 0x84e38 | value: 0			x26           		= 0x403038 | value: 0 
+x25           		= 0x84e30 | value: 0			x25           		= 0x403030 | value: 0 
+x24           		= 0x84e28 | value: 0			x24           		= 0x403028 | value: 0 
+x23           		= 0x84e20 | value: 0			x23           		= 0x403020 | value: 536870912 
+x22           		= 0x84e18 | value: 0			x22           		= 0x403018 | value: 538996 
+x21           		= 0x84e10 | value: 0			x21           		= 0x403010 | value: 4206544 
+x20 [args]			= 0x84e08 | value: 0x0		x20 [args]			= 0x403008 | value: 0x0 
+x19 [process()]		= 0x84e00 | value: 0x0		x19 [process()]		= 0x403000 | value: 0x0 
 
 current-------> 0x403000
 *****************************************************************************************************************************
 return from process execution
 
 back to _schedule()
-23451234512345123451234512345123451234512Entered _schedule() [sched.c]
+45123451234512345123451234512345123451234Entered _schedule() [sched.c]
 
 Switching Task: 2 -> 3
 
@@ -241,7 +304,7 @@ Preempt Count 		= 0x403080 | value: 1			Preempt Count 		= 0x405080 | value: 1
 Priority      		= 0x403078 | value: 1			Priority      		= 0x405078 | value: 1 
 Counter       		= 0x403070 | value: 0			Counter       		= 0x405070 | value: 1 
 State         		= 0x403068 | value: 0			State         		= 0x405068 | value: 0 
-pc            		= 0x403060 | value: 0x82104		pc            		= 0x405060 | value: 0x82104 
+pc            		= 0x403060 | value: 0x82354		pc            		= 0x405060 | value: 0x82354 
 sp            		= 0x403058 | value: 0x403e50	sp            		= 0x405058 | value: 0x405e50 
 fp            		= 0x403050 | value: 0x403e50			fp            	= 0x405050 | value: 0x405e50 
 x28           		= 0x403048 | value: 0			x28           		= 0x405048 | value: 0 
@@ -260,4 +323,89 @@ current-------> 0x405000
 return from process execution
 
 back to _schedule()
-bcdabcdabcdabcdabcdabcdabcdabcQEMU has been started.
+bcdabcdabcdabcdabcdabcdabcdabcdabcEntered _schedule() [sched.c]
+
+Switching Task: -1 -> 0
+
+******************************************************* CONTEXT SWITCH *******************************************************
+Preempt Count 		= 0x405080 | value: 1			Preempt Count 		= 0x84e80 | value: 1 
+Priority      		= 0x405078 | value: 1			Priority      		= 0x84e78 | value: 1 
+Counter       		= 0x405070 | value: 1			Counter       		= 0x84e70 | value: 1 
+State         		= 0x405068 | value: 0			State         		= 0x84e68 | value: 0 
+pc            		= 0x405060 | value: 0x82354		pc            		= 0x84e60 | value: 0x82354 
+sp            		= 0x405058 | value: 0x405e50	sp            		= 0x84e58 | value: 0x3fff70 
+fp            		= 0x405050 | value: 0x405e50			fp            	= 0x84e50 | value: 0x3fff70 
+x28           		= 0x405048 | value: 0			x28           		= 0x84e48 | value: 0 
+x27           		= 0x405040 | value: 0 -------> 	x27           = 0x84e40 | value: 0 
+x26           		= 0x405038 | value: 0			x26           		= 0x84e38 | value: 0 
+x25           		= 0x405030 | value: 0			x25           		= 0x84e30 | value: 0 
+x24           		= 0x405028 | value: 0			x24           		= 0x84e28 | value: 0 
+x23           		= 0x405020 | value: 536870912			x23           		= 0x84e20 | value: 0 
+x22           		= 0x405018 | value: 538996			x22           		= 0x84e18 | value: 0 
+x21           		= 0x405010 | value: 4214736			x21           		= 0x84e10 | value: 0 
+x20 [args]			= 0x405008 | value: 0x0		x20 [args]			= 0x84e08 | value: 0x0 
+x19 [process()]		= 0x405000 | value: 0x0		x19 [process()]		= 0x84e00 | value: 0x0 
+
+current-------> 0x84e00
+*****************************************************************************************************************************
+return from process execution
+
+back to _schedule()
+Entered schedule() in kernel_main() [kernel.c]
+Entered _schedule() [sched.c]
+
+Switching Task: 1 -> 2
+
+******************************************************* CONTEXT SWITCH *******************************************************
+Preempt Count 		= 0x84e80 | value: 1			Preempt Count 		= 0x403080 | value: 1 
+Priority      		= 0x84e78 | value: 1			Priority      		= 0x403078 | value: 1 
+Counter       		= 0x84e70 | value: 0			Counter       		= 0x403070 | value: 1 
+State         		= 0x84e68 | value: 0			State         		= 0x403068 | value: 0 
+pc            		= 0x84e60 | value: 0x82354		pc            		= 0x403060 | value: 0x82354 
+sp            		= 0x84e58 | value: 0x3fff70	sp            		= 0x403058 | value: 0x403e50 
+fp            		= 0x84e50 | value: 0x3fff70			fp            	= 0x403050 | value: 0x403e50 
+x28           		= 0x84e48 | value: 0			x28           		= 0x403048 | value: 0 
+x27           		= 0x84e40 | value: 0 -------> 	x27           = 0x403040 | value: 0 
+x26           		= 0x84e38 | value: 0			x26           		= 0x403038 | value: 0 
+x25           		= 0x84e30 | value: 0			x25           		= 0x403030 | value: 0 
+x24           		= 0x84e28 | value: 0			x24           		= 0x403028 | value: 0 
+x23           		= 0x84e20 | value: 0			x23           		= 0x403020 | value: 536870912 
+x22           		= 0x84e18 | value: 0			x22           		= 0x403018 | value: 538996 
+x21           		= 0x84e10 | value: 0			x21           		= 0x403010 | value: 4206544 
+x20 [args]			= 0x84e08 | value: 0x0		x20 [args]			= 0x403008 | value: 0x0 
+x19 [process()]		= 0x84e00 | value: 0x0		x19 [process()]		= 0x403000 | value: 0x0 
+
+current-------> 0x403000
+*****************************************************************************************************************************
+return from process execution
+
+back to _schedule()
+512345123451234512345123451234512345123451Entered _schedule() [sched.c]
+
+Switching Task: 2 -> 3
+
+******************************************************* CONTEXT SWITCH *******************************************************
+Preempt Count 		= 0x403080 | value: 1			Preempt Count 		= 0x405080 | value: 1 
+Priority      		= 0x403078 | value: 1			Priority      		= 0x405078 | value: 1 
+Counter       		= 0x403070 | value: 0			Counter       		= 0x405070 | value: 1 
+State         		= 0x403068 | value: 0			State         		= 0x405068 | value: 0 
+pc            		= 0x403060 | value: 0x82354		pc            		= 0x405060 | value: 0x82354 
+sp            		= 0x403058 | value: 0x403e50	sp            		= 0x405058 | value: 0x405e50 
+fp            		= 0x403050 | value: 0x403e50			fp            	= 0x405050 | value: 0x405e50 
+x28           		= 0x403048 | value: 0			x28           		= 0x405048 | value: 0 
+x27           		= 0x403040 | value: 0 -------> 	x27           = 0x405040 | value: 0 
+x26           		= 0x403038 | value: 0			x26           		= 0x405038 | value: 0 
+x25           		= 0x403030 | value: 0			x25           		= 0x405030 | value: 0 
+x24           		= 0x403028 | value: 0			x24           		= 0x405028 | value: 0 
+x23           		= 0x403020 | value: 536870912			x23           		= 0x405020 | value: 536870912 
+x22           		= 0x403018 | value: 538996			x22           		= 0x405018 | value: 538996 
+x21           		= 0x403010 | value: 4206544			x21           		= 0x405010 | value: 4214736 
+x20 [args]			= 0x403008 | value: 0x0		x20 [args]			= 0x405008 | value: 0x0 
+x19 [process()]		= 0x403000 | value: 0x0		x19 [process()]		= 0x405000 | value: 0x0 
+
+current-------> 0x405000
+*****************************************************************************************************************************
+return from process execution
+
+back to _schedule()
+dabcdabcdabcdabcdabcdabcdabcQEMU has been started.

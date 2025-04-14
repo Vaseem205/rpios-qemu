@@ -42,6 +42,27 @@ int copy_process(unsigned long clone_flags, unsigned long fn, unsigned long arg,
 	p->cpu_context.pc = (unsigned long)ret_from_fork;
 	p->cpu_context.sp = (unsigned long)childregs;
 
+	printf("\n*********** COPY PROCESS CONTEXT ***********\n");
+	printf("Preempt Count = 0x%x | value: %d\n", &(p->preempt_count), p->preempt_count);
+	printf("Priority      = 0x%x | value: %d\n", &(p->priority), p->priority);
+	printf("Counter       = 0x%x | value: %d\n", &(p->counter), p->counter);
+	printf("State         = 0x%x | value: %d\n", &(p->state), p->state);
+	printf("pc            = 0x%x | value: 0x%x\n", &(p->cpu_context.pc), p->cpu_context.pc);
+	printf("sp            = 0x%x | value: 0x%x\n", &(p->cpu_context.sp), p->cpu_context.sp);
+	printf("fp            = 0x%x | value: 0x%x\n", &(p->cpu_context.fp), p->cpu_context.fp);
+	printf("x28           = 0x%x | value: %d\n", &(p->cpu_context.x28), p->cpu_context.x28);
+	printf("x27           = 0x%x | value: %d\n", &(p->cpu_context.x27), p->cpu_context.x27);
+	printf("x26           = 0x%x | value: %d\n", &(p->cpu_context.x26), p->cpu_context.x26);
+	printf("x25           = 0x%x | value: %d\n", &(p->cpu_context.x25), p->cpu_context.x25);
+	printf("x24           = 0x%x | value: %d\n", &(p->cpu_context.x24), p->cpu_context.x24);
+	printf("x23           = 0x%x | value: %d\n", &(p->cpu_context.x23), p->cpu_context.x23);
+	printf("x22           = 0x%x | value: %d\n", &(p->cpu_context.x22), p->cpu_context.x22);
+	printf("x21           = 0x%x | value: %d\n", &(p->cpu_context.x21), p->cpu_context.x21);
+	printf("x20           = 0x%x | value: 0x%x\n", &(p->cpu_context.x20), p->cpu_context.x20);
+	printf("x19           = 0x%x | value: 0x%x\n", &(p->cpu_context.x19), p->cpu_context.x19);
+	printf("current-------> 0x%x\n", current);
+	printf("*********************************************\n");
+
 	int pid = nr_tasks++;
 	task[pid] = p;	
 	preempt_enable();
